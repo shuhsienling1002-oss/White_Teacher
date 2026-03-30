@@ -7,32 +7,32 @@ from io import BytesIO
 
 # --- 0. 系統配置 ---
 st.set_page_config(
-    page_title="阿美語 - 海洋 Liyal", 
-    page_icon="🌊", 
+    page_title="阿美語 - 醃肉 Misasiraw", 
+    page_icon="🥩", 
     layout="centered", 
     initial_sidebar_state="collapsed"
 )
 
-# --- CSS 視覺魔法 (深海螢光科技風 - 高對比修正版) ---
+# --- CSS 視覺魔法 (炭火燻烤美食風 - 醃肉專屬版) ---
 st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap');
 
-    /* 全局背景：深海藍黑 */
+    /* 全局背景：炭火深紅黑 */
     .stApp { 
-        background-color: #000810;
-        background-image: radial-gradient(circle at 50% 0%, #0D47A1 0%, #000810 80%);
+        background-color: #1a0a05;
+        background-image: radial-gradient(circle at 50% 0%, #4E342E 0%, #1a0a05 80%);
         font-family: 'Noto Sans TC', sans-serif;
-        color: #E0F7FA;
+        color: #FBE9E7;
     }
     
     .block-container { padding-top: 1rem !important; padding-bottom: 5rem !important; }
 
     /* --- Header --- */
     .header-container {
-        background: rgba(13, 71, 161, 0.3);
-        border: 1px solid #00E5FF;
-        box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+        background: rgba(78, 52, 46, 0.4);
+        border: 1px solid #FF8A65;
+        box-shadow: 0 0 15px rgba(255, 138, 101, 0.3);
         border-radius: 15px;
         padding: 30px;
         text-align: center;
@@ -42,17 +42,17 @@ st.markdown("""
     
     .main-title {
         font-family: 'Roboto Mono', monospace;
-        color: #00E5FF;
+        color: #FF8A65;
         font-size: 40px;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 3px;
-        text-shadow: 0 0 10px #00E5FF;
+        text-shadow: 0 0 10px #FF8A65;
         margin: 0;
     }
     
-    .sub-title { color: #B2EBF2; font-size: 18px; margin-top: 10px; letter-spacing: 1px; }
-    .teacher-tag { display: inline-block; margin-top: 15px; padding: 5px 15px; border: 1px solid #FF4081; color: #FF4081; border-radius: 50px; font-size: 12px; font-weight: bold; letter-spacing: 1px; }
+    .sub-title { color: #FFCC80; font-size: 18px; margin-top: 10px; letter-spacing: 1px; }
+    .teacher-tag { display: inline-block; margin-top: 15px; padding: 5px 15px; border: 1px solid #FFD54F; color: #FFD54F; border-radius: 50px; font-size: 12px; font-weight: bold; letter-spacing: 1px; }
 
     /* --- Cards --- */
     .word-card {
@@ -60,28 +60,28 @@ st.markdown("""
         border-radius: 12px;
         padding: 20px 10px;
         text-align: center;
-        border: 1px solid rgba(0, 229, 255, 0.2);
+        border: 1px solid rgba(255, 138, 101, 0.2);
         height: 100%;
         margin-bottom: 15px;
     }
     .icon-box { font-size: 40px; margin-bottom: 10px; }
     .amis-word { font-size: 18px; font-weight: 700; color: #FFFFFF; margin-bottom: 5px; font-family: 'Roboto Mono', monospace; }
-    .zh-word { font-size: 14px; color: #80DEEA; }
+    .zh-word { font-size: 14px; color: #FFAB91; }
 
     /* --- Sentences --- */
     .sentence-box {
-        background: linear-gradient(90deg, rgba(0,229,255,0.05) 0%, rgba(0,0,0,0) 100%);
-        border-left: 4px solid #FF4081;
+        background: linear-gradient(90deg, rgba(255,138,101,0.08) 0%, rgba(0,0,0,0) 100%);
+        border-left: 4px solid #FFCC80;
         padding: 20px;
         margin-bottom: 20px;
         border-radius: 0 10px 10px 0;
     }
-    .sentence-amis { font-size: 18px; color: #FF80AB; font-weight: 700; margin-bottom: 8px; }
-    .sentence-zh { font-size: 15px; color: #B2EBF2; }
+    .sentence-amis { font-size: 18px; color: #FFE082; font-weight: 700; margin-bottom: 8px; }
+    .sentence-zh { font-size: 15px; color: #FFCC80; }
 
     /* --- Buttons --- */
-    .stButton>button { width: 100%; border-radius: 5px; background: transparent; border: 2px solid #00E5FF; color: #00E5FF !important; font-weight: bold; }
-    .stButton>button:hover { background: #00E5FF; color: #000 !important; }
+    .stButton>button { width: 100%; border-radius: 5px; background: transparent; border: 2px solid #FF8A65; color: #FF8A65 !important; font-weight: bold; }
+    .stButton>button:hover { background: #FF8A65; color: #000 !important; }
 
     /* --- Tab (分頁) 高對比修正 --- */
     .stTabs [data-baseweb="tab-list"] {
@@ -89,7 +89,6 @@ st.markdown("""
         background-color: transparent;
     }
     
-    /* 未選中的狀態：亮白字 + 半透明底 */
     .stTabs [data-baseweb="tab"] {
         color: #FFFFFF !important; 
         background-color: rgba(255, 255, 255, 0.1) !important;
@@ -97,18 +96,16 @@ st.markdown("""
         border-radius: 5px;
         padding: 10px 20px;
         font-weight: bold;
-        opacity: 1 !important; /* 強制不透明 */
+        opacity: 1 !important; 
     }
 
-    /* 被選中的狀態：亮藍底 + 黑字 (超清楚) */
     .stTabs [aria-selected="true"] {
-        background-color: #00E5FF !important;
+        background-color: #FF8A65 !important;
         color: #000000 !important;
-        border: 1px solid #00E5FF !important;
-        box-shadow: 0 0 10px #00E5FF;
+        border: 1px solid #FF8A65 !important;
+        box-shadow: 0 0 10px #FF8A65;
     }
     
-    /* 去掉原本的底線 */
     .stTabs [data-baseweb="tab-highlight"] {
         display: none;
     }
@@ -120,58 +117,52 @@ st.markdown("""
 
 # --- 1. 資料設定 ---
 VOCABULARY = [
-    {"amis": "salawacan", "zh": "海岸", "emoji": "🏖️", "file": "v_salawacan"},
-    {"amis": "kanatal",   "zh": "海島", "emoji": "🏝️", "file": "v_kanatal"},
-    {"amis": "tapelik nu liyal/laying nu liyal", "zh": "海浪", "emoji": "🌊", "file": "v_tapelik"},
-    {"amis": "cunami",    "zh": "海嘯", "emoji": "🌊🌪️", "file": "v_cunami"},
-    {"amis": "rariyaran", "zh": "海上", "emoji": "🚢", "file": "v_rariyaran"},
+    {"amis": "siraw", "zh": "醃肉", "emoji": "🥩", "file": "v_siraw"},
+    {"amis": "hakhak", "zh": "糯米飯", "emoji": "🍚", "file": "v_hakhak"},
+    {"amis": "cilak", "zh": "鹽巴", "emoji": "🧂", "file": "v_cilak"}, # 補充第三個單字以符合測驗邏輯
 ]
 
 SENTENCES = [
     {
-        "amis": "Iraay ku valiyus, matungalay ku tapelik tu salawacan nu liyal.", 
-        "zh": "有颱風，沿海地區的浪變高了。", 
-        "emoji": "🌀", 
-        "file": "s_valiyus"
+        "amis": "Komaen kako to siraw ato hakhak.", 
+        "zh": "我吃醃肉和糯米飯。", 
+        "emoji": "😋", 
+        "file": "s_komaen"
     },
     {
-        "amis": "Cacay ofad ku kasakanatal nu Ripun.", 
-        "zh": "日本有一萬多個海島。", 
-        "emoji": "🇯🇵", 
-        "file": "s_ripun"
+        "amis": "Misasiraw kako.", 
+        "zh": "我製作醃肉。", 
+        "emoji": "👩‍🍳", 
+        "file": "s_misasiraw"
     },
     {
-        "amis": "I rariyaran adihayay ku lunan a mivuting.", 
-        "zh": "在海上有很多漁船捕魚。", 
-        "emoji": "🛥️", 
-        "file": "s_lunan"
+        "amis": "Maolah kako to siraw.", 
+        "zh": "我喜歡醃肉。", 
+        "emoji": "❤️", 
+        "file": "s_maolah" # 補充第三句以符合測驗邏輯
     },
 ]
 
 QUIZ_DATA = [
-    {"q": "Iraay ku valiyus, matungalay ku ______ tu salawacan nu liyal.", "zh": "有颱風，沿海地區的浪變高了", "ans": "tapelik", "opts": ["tapelik", "kanatal", "cunami"]},
-    {"q": "______ / 海嘯", "zh": "海嘯", "ans": "cunami", "opts": ["cunami", "salawacan", "rariyaran"]},
-    {"q": "I ______ adihayay ku lunan a mivuting.", "zh": "在海上有很多漁船捕魚", "ans": "rariyaran", "opts": ["rariyaran", "kanatal", "salawacan"]},
-    {"q": "______ / 海島", "zh": "海島", "ans": "kanatal", "opts": ["kanatal", "tapelik", "cunami"]},
-    {"q": "______ / 海岸", "zh": "海岸", "ans": "salawacan", "opts": ["salawacan", "rariyaran", "kanatal"]},
+    {"q": "Komaen kako to ______ ato hakhak.", "zh": "我吃醃肉和糯米飯。", "ans": "siraw", "opts": ["siraw", "hakhak", "cilak"]},
+    {"q": "______ / 糯米飯", "zh": "糯米飯", "ans": "hakhak", "opts": ["hakhak", "siraw", "cilak"]},
+    {"q": "Misasiraw ______.", "zh": "我製作醃肉。", "ans": "kako", "opts": ["kako", "siraw", "hakhak"]},
+    {"q": "______ / 醃肉", "zh": "醃肉", "ans": "siraw", "opts": ["siraw", "hakhak", "cilak"]},
+    {"q": "______ / 鹽巴", "zh": "鹽巴", "ans": "cilak", "opts": ["cilak", "siraw", "hakhak"]},
 ]
 
 # --- 1.5 強力語音核心 (診斷版) ---
 def play_audio(text, filename_base=None):
     if filename_base:
-        # 優先找 m4a
         for ext in ['m4a', 'mp3', 'ma4', 'wav']: 
             path = f"audio/{filename_base}.{ext}"
             if os.path.exists(path):
-                # 找到檔案了！
                 mime = 'audio/mp4' if ext in ['m4a', 'ma4'] else 'audio/mp3'
                 st.audio(path, format=mime)
                 return
         
-        # 找不到檔案
         st.markdown(f"<span style='color:red; font-size:12px;'>⚠️ 找不到檔案: {filename_base}.m4a</span>", unsafe_allow_html=True)
 
-    # 備用方案：機器發音
     try:
         speak_text = text.split('/')[0].strip()
         tts = gTTS(text=speak_text, lang='id') 
@@ -214,7 +205,7 @@ if 'q1_data' not in st.session_state:
 
 # --- 3. 介面呈現 ---
 def show_learning_mode():
-    st.markdown("<h3 style='color:#00E5FF; text-align:center; margin-bottom:20px;'>資料庫：單字模組</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color:#FF8A65; text-align:center; margin-bottom:20px;'>資料庫：單字模組</h3>", unsafe_allow_html=True)
     
     cols = st.columns(3)
     for idx, item in enumerate(VOCABULARY):
@@ -231,7 +222,7 @@ def show_learning_mode():
             st.write("")
 
     st.markdown("---")
-    st.markdown("<h3 style='color:#00E5FF; text-align:center; margin-bottom:20px;'>資料庫：語法模組</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color:#FF8A65; text-align:center; margin-bottom:20px;'>資料庫：語法模組</h3>", unsafe_allow_html=True)
     
     for item in SENTENCES:
         st.markdown(f"""
@@ -243,14 +234,14 @@ def show_learning_mode():
         play_audio(item['amis'], filename_base=item['file'])
 
 def show_quiz_mode():
-    st.markdown("<h3 style='text-align: center; color: #FF4081;'>任務：知識檢測</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center; color: #FFCC80;'>任務：知識檢測</h3>", unsafe_allow_html=True)
     st.progress((st.session_state.current_q) / 3)
     st.write("")
 
     if st.session_state.current_q == 0:
         data = st.session_state.q1_data
         target = data['target']
-        st.markdown(f"""<div class="quiz-card" style="text-align:center; padding:20px; border:1px solid #FF4081; border-radius:10px;"><h3>🔊 聲納訊號辨識 (聽力)</h3></div>""", unsafe_allow_html=True)
+        st.markdown(f"""<div class="quiz-card" style="text-align:center; padding:20px; border:1px solid #FFCC80; border-radius:10px;"><h3>🔊 聲納訊號辨識 (聽力)</h3></div>""", unsafe_allow_html=True)
         play_audio(target['amis'], filename_base=target['file'])
         st.write("")
         
@@ -271,10 +262,10 @@ def show_quiz_mode():
     elif st.session_state.current_q == 1:
         data = st.session_state.q2_data
         st.markdown(f"""
-        <div class="quiz-card" style="text-align:center; padding:20px; border:1px solid #FF4081; border-radius:10px;">
+        <div class="quiz-card" style="text-align:center; padding:20px; border:1px solid #FFCC80; border-radius:10px;">
             <h3>🧩 導航圖資修復 (填空)</h3>
-            <h2 style="color:#00E5FF;">{data['q'].replace('______', '___?___')}</h2>
-            <p style="color:#B2EBF2;">{data['zh']}</p>
+            <h2 style="color:#FF8A65;">{data['q'].replace('______', '___?___')}</h2>
+            <p style="color:#FFAB91;">{data['zh']}</p>
         </div>
         """, unsafe_allow_html=True)
         
@@ -296,9 +287,9 @@ def show_quiz_mode():
         data = st.session_state.q3_data
         target = data['target']
         st.markdown(f"""
-        <div class="quiz-card" style="text-align:center; padding:20px; border:1px solid #FF4081; border-radius:10px;">
+        <div class="quiz-card" style="text-align:center; padding:20px; border:1px solid #FFCC80; border-radius:10px;">
             <h3>📡 通訊解碼 (句意解析)</h3>
-            <h2 style="color:#FF4081;">{target['amis']}</h2>
+            <h2 style="color:#FFE082;">{target['amis']}</h2>
         </div>
         """, unsafe_allow_html=True)
         
@@ -318,8 +309,8 @@ def show_quiz_mode():
 
     else:
         st.markdown(f"""
-        <div class="quiz-card" style="text-align:center; padding:20px; border:1px solid #00E5FF; border-radius:10px;">
-            <h1 style='color: #00E5FF;'>任務全數完成</h1>
+        <div class="quiz-card" style="text-align:center; padding:20px; border:1px solid #FF8A65; border-radius:10px;">
+            <h1 style='color: #FF8A65;'>任務全數完成</h1>
             <p>目前積分: {st.session_state.score} / 3</p>
             <div style='font-size: 60px;'>🚀</div>
         </div>
@@ -339,7 +330,7 @@ def show_debug_info():
 
     files = os.listdir("audio")
     if not files:
-        st.warning("⚠️ audio 資料夾是空的！")
+        st.warning("⚠️ audio 資料夾是空的！請記得放入醃肉單元的音檔喔。")
     else:
         st.success(f"✅ audio 資料夾內發現 {len(files)} 個檔案，系統運作正常。")
 
@@ -347,13 +338,13 @@ def show_debug_info():
 def main():
     st.markdown("""
     <div class="header-container">
-        <h1 class="main-title">O LIYAL</h1>
-        <div class="sub-title">海洋</div>
+        <h1 class="main-title">O MISASIRAW</h1>
+        <div class="sub-title">製作醃肉</div>
         <div class="teacher-tag">講師：孫秀蘭 | 教材提供者：孫秀蘭</div>
     </div>
     """, unsafe_allow_html=True)
     
-    tab1, tab2 = st.tabs(["🌊 海洋筆記", "🎮 挑戰任務"])
+    tab1, tab2 = st.tabs(["🥩 醃肉筆記", "🎮 挑戰任務"])
     
     with tab1:
         show_learning_mode()
@@ -364,4 +355,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
